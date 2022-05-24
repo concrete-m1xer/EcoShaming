@@ -41,11 +41,16 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private EditText regEmailEdit;
     private EditText regPasswordEdit;
     private EditText regReenterPasswordEdit;
+    private Boolean isRegistr = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         this.emailEdit = (EditText)findViewById(R.id.editTextTextEmailAddress);
         this.passwordEdit = (EditText)findViewById(R.id.editTextTextPassword);
@@ -62,6 +67,19 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 updateUI(user);
             }
         };
+    }
+
+    @Override
+    public void onBackPressed(){
+        if (isRegistr){
+            setContentView(R.layout.activity_signin);
+            findViewById(R.id.signinButton).setOnClickListener(this);
+            findViewById(R.id.regButton).setOnClickListener(this);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().hide();
+            }
+            this.isRegistr = false;
+        }
     }
 
     private void updateUI(FirebaseUser user) {
@@ -94,10 +112,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
             if(!task.isSuccessful()){
                 Toast.makeText(SignInActivity.this,
-                        "Authentication failed", Toast.LENGTH_SHORT).show();
+                        "Не удалось зарегистрировать аккаунт", Toast.LENGTH_SHORT).show();
             }
-                });
-    }
+    });
+}
 
     private boolean validateForm() {
         return (!TextUtils.isEmpty(emailEdit.getText().toString())) &&
@@ -114,7 +132,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 task -> {
                     Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
-                    if(!task.isSuccessful()){
+                    if(!task.isSuccessful()) {
                         Log.w(TAG, "signInWithEmail:failed", task.getException());
                         Toast.makeText(SignInActivity.this,
                                 "Неправильный пароль или e-mail", Toast.LENGTH_SHORT).show();
@@ -141,16 +159,19 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 this.regReenterPasswordEdit =
                         (EditText) findViewById(R.id.editRegReenterPassword);
                 findViewById(R.id.regRegButton).setOnClickListener(this);
+                this.isRegistr = true;
                 break;
             }
-            case (R.id.signinButton):
-                    {
-                        signIn(this.emailEdit.getText().toString(),
-                                this.passwordEdit.getText().toString());
-                    }
-                    break;
-            case (R.id.regRegButton):
-            {
+            case (R.id.signinButton): {
+                signIn(this.emailEdit.getText().toString(),
+                        this.passwordEdit.getText().toString());
+                if (mAuth.getCurrentUser() != null) {
+                    Intent intent = new Intent(this, IndexActivity.class);
+                    startActivity(intent);
+                }
+            }
+            break;
+            case (R.id.regRegButton): {
                 if(this.nameEdit.getText().toString().matches("") ||
                     this.lastNameEdit.getText().toString().matches("") ||
                     this.regEmailEdit.getText().toString().matches("") ||
@@ -164,25 +185,31 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     ) {
                         createAccount(this.regEmailEdit.getText().toString(),
                                 this.regPasswordEdit.getText().toString());
-                        FirebaseFirestore db = FirebaseFirestore.getInstance();
-                        Map<String, Object> user = new HashMap<>();
-                        user.put("name", this.nameEdit.getText().toString());
-                        user.put("lastname", this.lastNameEdit.getText().toString());
-                        user.put("email", this.regEmailEdit.getText().toString());
-                        db.collection("users")
-                                .add(user)
-                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.w(TAG, "Error adding document", e);
-                                    }
-                                });
+                        if (mAuth.getCurrentUser() != null){
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("name", this.nameEdit.getText().toString());
+                            user.put("lastname", this.lastNameEdit.getText().toString());
+                            user.put("email", this.regEmailEdit.getText().toString());
+                            db.collection("users")
+                                    .add(user)
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w(TAG, "Error adding document", e);
+                                        }
+                                    });
+                            Intent intent = new Intent(this, IndexActivity.class);
+                            startActivity(intent);
+                        } else {
+                            break;
+                        }
                     } else {
                         Toast.makeText(SignInActivity.this, "Пароли не совпадают!",
                                 Toast.LENGTH_SHORT).show();

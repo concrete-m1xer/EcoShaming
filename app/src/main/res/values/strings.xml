@@ -21,11 +21,13 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="rebButton">Зарегистрироваться</string>
     <string name="passwdButton">Пароль</string>
-    <string name="e_mail">E-mail</string>
-    <string name="Sign_in">Войти</string>
+    <string name="e_mail">Логин</string>
+    <string name="Sign_in">Начать AR-путешествие</string>
     <string name="enter_name">Введите имя</string>
     <string name="enter_lastname">Введите фамилию</string>
     <string name="reenter_password">Подтвердите пароль</string>
     <string name="regestration_prompt">ПОЖАЛУЙСТА ЗАРЕГИСТРИРУЙТЕСЬ!</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="registration">РЕГИСТРАЦИЯ</string>
+    <string name="title_activity_index">IndexActivity</string>
 </resources>
