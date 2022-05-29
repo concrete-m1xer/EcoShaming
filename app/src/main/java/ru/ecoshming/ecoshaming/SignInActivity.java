@@ -205,7 +205,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                                             Log.w(TAG, "Error adding document", e);
                                         }
                                     });
-                            Intent intent = new Intent(this, IndexActivity.class);
+                            Intent intent = new Intent(SignInActivity.this, IndexActivity.class);
                             startActivity(intent);
                         } else {
                             break;
