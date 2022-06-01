@@ -34,7 +34,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     private EditText emailEdit;
     private EditText passwordEdit;
-    private FirebaseAuth mAuth;
+    static private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private EditText nameEdit;
     private EditText lastNameEdit;
@@ -42,6 +42,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private EditText regPasswordEdit;
     private EditText regReenterPasswordEdit;
     private Boolean isRegistr = false;
+    private Boolean isLogged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +115,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 Toast.makeText(SignInActivity.this,
                         "Не удалось зарегистрировать аккаунт", Toast.LENGTH_SHORT).show();
             }
+            isLogged = true;
+            isRegistr = true;
     });
 }
 
@@ -132,11 +135,12 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 task -> {
                     Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
 
-                    if(!task.isSuccessful()) {
+                    if(!task.isSuccessful() && !isLogged) {
                         Log.w(TAG, "signInWithEmail:failed", task.getException());
                         Toast.makeText(SignInActivity.this,
                                 "Неправильный пароль или e-mail", Toast.LENGTH_SHORT).show();
                     }
+                    isLogged = true;
                 });
     }
 
@@ -163,9 +167,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             }
             case (R.id.signinButton): {
-                signIn(this.emailEdit.getText().toString(),
-                        this.passwordEdit.getText().toString());
-                if (mAuth.getCurrentUser() != null) {
+                if (!isLogged) {
+                    signIn(this.emailEdit.getText().toString(),
+                            this.passwordEdit.getText().toString());
+                }
+                if (isLogged) {
                     Intent intent = new Intent(this, IndexActivity.class);
                     startActivity(intent);
                 }

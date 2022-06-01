@@ -14,6 +14,10 @@ public class IndexActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.index);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         ImageButton imgbtn1 = (ImageButton) findViewById(R.id.imageButton);
         imgbtn1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

@@ -12,6 +12,9 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         ImageButton imgbtn2 = (ImageButton) findViewById(R.id.imageButton2);
         imgbtn2.setOnClickListener(new View.OnClickListener() {
