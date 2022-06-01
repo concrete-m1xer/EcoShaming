@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -51,6 +52,11 @@ public class IndexActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(IndexActivity.this, ProfileActivity.class));
             }
+
         });
+
+        TextView tv8 = (TextView)findViewById(R.id.textView8);
+
+            tv8.setText();
     }
 }
