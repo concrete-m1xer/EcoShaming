@@ -61,7 +61,7 @@ public class IndexActivity extends AppCompatActivity {
 
         });
 
-        TextView tv8 = (TextView)findViewById(R.id.textView8);
+        /*TextView tv8 = (TextView)findViewById(R.id.textView8);
 
 
         FirebaseUser u = FirebaseAuth.getInstance().getCurrentUser();
@@ -70,7 +70,7 @@ public class IndexActivity extends AppCompatActivity {
 
 
         tv8.setText(db.collection("users").whereEqualTo("email", u.getEmail()).get().getResult().toString());
-        //чекнуть вывод
+        //чекнуть вывод*/
 
     }
 }
