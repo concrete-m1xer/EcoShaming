@@ -34,7 +34,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     private EditText emailEdit;
     private EditText passwordEdit;
-    static private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private EditText nameEdit;
     private EditText lastNameEdit;

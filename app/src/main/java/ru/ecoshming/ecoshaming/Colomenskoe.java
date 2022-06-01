@@ -7,33 +7,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-
-public class RoutesActivity extends AppCompatActivity {
-
+public class Colomenskoe extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_routes);
+        setContentView(R.layout.activity_colomenskoe);
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
 
-
-        ImageButton back = (ImageButton) findViewById(R.id.imageButton4);
+        ImageButton back = (ImageButton) findViewById(R.id.imageButton5);
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 finish();
             }
         });
 
-        Button route1 = (Button) findViewById(R.id.route_col);
-        route1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(RoutesActivity.this, Colomenskoe.class));
+        Button tomap = (Button) findViewById(R.id.tomap);
+        tomap.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                startActivity(new Intent(Colomenskoe.this, null));
             }
         });
     }
