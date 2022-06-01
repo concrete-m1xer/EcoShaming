@@ -9,6 +9,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.jar.Attributes;
+
 public class IndexActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -57,6 +63,14 @@ public class IndexActivity extends AppCompatActivity {
 
         TextView tv8 = (TextView)findViewById(R.id.textView8);
 
-            tv8.setText();
+
+        FirebaseUser u = FirebaseAuth.getInstance().getCurrentUser();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
+        tv8.setText(db.collection("users").whereEqualTo("email", u.getEmail()).get().getResult().toString());
+        //чекнуть вывод
+
     }
 }
