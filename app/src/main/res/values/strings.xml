@@ -30,4 +30,5 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="registration">РЕГИСТРАЦИЯ</string>
     <string name="title_activity_index">IndexActivity</string>
+    <string name="title_activity_routes">routes_activity</string>
 </resources>
