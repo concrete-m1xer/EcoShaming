@@ -34,7 +34,7 @@ public class Colomenskoe extends AppCompatActivity implements View.OnClickListen
         Button tomap = (Button) findViewById(R.id.tomap);
         tomap.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                startActivity(new Intent(Colomenskoe.this, null));
+                SetMap();
             }
         });
     }

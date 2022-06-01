@@ -19,11 +19,16 @@
 
     <ImageButton
         android:id="@+id/gorodishe_discr"
-        android:layout_width="10dp"
-        android:layout_height="7dp"
-        app:srcCompat="@android:drawable/alert_light_frame"
-        tools:layout_editor_absoluteX="173dp"
-        tools:layout_editor_absoluteY="616dp" />
+        android:layout_width="16dp"
+        android:layout_height="14dp"
+        android:foreground="@color/main_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar6"
+        app:layout_constraintVertical_bias="0.848"
+        app:srcCompat="@android:drawable/alert_light_frame" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar6"
@@ -47,9 +52,15 @@
 
     <ImageButton
         android:id="@+id/shore_discr"
-        android:layout_width="8dp"
-        android:layout_height="8dp"
-        app:srcCompat="@android:drawable/alert_light_frame"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="336dp" />
+        android:layout_width="16dp"
+        android:layout_height="11dp"
+        android:background="@color/main_green"
+        android:foreground="@color/main_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.759"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar6"
+        app:layout_constraintVertical_bias="0.463"
+        app:srcCompat="@android:drawable/alert_light_frame" />
 </androidx.constraintlayout.widget.ConstraintLayout>
