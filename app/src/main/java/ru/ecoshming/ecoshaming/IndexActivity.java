@@ -45,5 +45,12 @@ public class IndexActivity extends AppCompatActivity {
                 startActivity(new Intent(IndexActivity.this, ContactsActivity.class));
             }
         });
+
+        ImageButton imgbtn5 = (ImageButton) findViewById(R.id.imageButton5);
+        imgbtn5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(IndexActivity.this, ProfileActivity.class));
+            }
+        });
     }
 }

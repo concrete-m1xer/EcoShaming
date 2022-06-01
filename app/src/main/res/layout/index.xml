@@ -53,6 +53,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Гениев (ссыль)"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton5" />
+
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="82dp"
@@ -62,5 +71,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Гений (ссыль)"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton5" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="51dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="@color/main_green"
+        android:src="@drawable/common_google_signin_btn_icon_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:src="@drawable/common_google_signin_btn_icon_dark_focused" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
