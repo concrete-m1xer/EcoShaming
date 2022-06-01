@@ -25,10 +25,10 @@ public class IndexActivity extends AppCompatActivity {
             }
         });
 
-        Button btn6 = (Button) findViewById(R.id.button6);
-        btn6.setOnClickListener(new View.OnClickListener() {
+        Button routes = (Button) findViewById(R.id.routes);
+        routes.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //startActivity(new Intent(IndexActivity.this, MapsActivity.class));
+                startActivity(new Intent(IndexActivity.this, RoutesActivity.class));
             }
         });
 
