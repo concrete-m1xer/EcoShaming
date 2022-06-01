@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RoutesActivity">
+    tools:context=".Colomenskoe">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar5"
+        android:id="@+id/toolbar4"
         android:layout_width="415dp"
         android:layout_height="75dp"
         android:background="?attr/colorPrimary"
@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/imageButton5"
         android:layout_width="82dp"
         android:layout_height="74dp"
         android:backgroundTint="@color/main_green"
@@ -26,15 +26,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
-    <Button
-        android:id="@+id/route_col"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:text="Парк коломенское"
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="387dp"
+        android:layout_height="474dp"
+        android:text="@string/resource_1"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.155" />
+        app:layout_constraintVertical_bias="0.497" />
+
+    <Button
+        android:id="@+id/tomap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="К карте"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 </androidx.constraintlayout.widget.ConstraintLayout>
