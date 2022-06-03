@@ -12,8 +12,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getActionBar().hide();
         setContentView(R.layout.activity_main);
-        Intent i = new Intent(this, SignInActivity.class);
+        Intent i = new Intent(this, RoutesActivity.class);
         startActivity(i);
     }
 }
